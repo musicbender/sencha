@@ -1,0 +1,14 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.new-test {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 8rem;
+  > .new-test-btn {
+    @include super-center(initial);
+    right: 0;
+  }
+}

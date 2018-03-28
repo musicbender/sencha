@@ -1,0 +1,13 @@
+{
+  "stat_card_menu": {
+    "report": {
+      "label": "Full Results"
+    },
+    "archive": {
+      "label": "Browse Archive"
+    },
+    "run-test": {
+      "label": "Run Test"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.settings-menu {
+  > [class^="MuiPaper-"] {
+    width: 18rem;
+  }
+}

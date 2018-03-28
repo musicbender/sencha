@@ -1,0 +1,9 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+section.archive-list {
+  position: relative;
+  width: 100%;
+  max-width: $archive-max;
+  margin: 2rem auto;
+}

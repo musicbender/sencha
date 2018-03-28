@@ -1,0 +1,17 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+main.archive {
+  > .title-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: $archive-max;
+    margin: 5rem auto 0;
+    > h1 {
+      padding-left: 1.35rem;
+      @media (min-width: $archive-max) {
+        padding: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.archive-list-item {
+  .detail-wrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 1fr 1fr;
+    @media (min-width: $small-desktop-width) {
+      width: 90%;
+      grid-template-columns: repeat(6,1fr);
+      grid-template-rows: 1fr;
+    }
+    > .archive-detail {
+      margin-bottom: 1rem;
+      @media (min-width: $small-desktop-width) {
+        margin: 0;
+      }
+      > .archive-detail-name {
+        font-weight: bold;
+      }
+    }
+  }
+}

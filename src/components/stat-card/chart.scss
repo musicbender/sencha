@@ -1,0 +1,31 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.chart-wrap {
+  $size: 66.66%;
+  @include super-center();
+  display: block;
+  width: $size;
+  height: $size;
+}
+
+.chart-slice {
+  stroke: #fff;
+  stroke-width: 1px;
+
+  .ct-series-a & {
+    fill: $green500;
+  }
+
+  .ct-series-b & {
+    fill: $red500;
+  }
+
+  .ct-series-c & {
+    fill: $ltblue500;
+  }
+
+  .ct-series-d & {
+    fill: $black38;
+  }
+}

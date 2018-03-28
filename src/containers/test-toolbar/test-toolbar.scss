@@ -1,0 +1,68 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+section.test-toolbar {
+  $text-color: rgba($white, 0.9);
+  $divider-x: -1.25rem;
+  position: relative;
+  height: auto;
+  width: 100%;
+  > .toolbar {
+    background-color: $green700;
+    color: $white;
+    > .back-btn {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $fast $easeInOut;
+    }
+    > .title {
+      color: $text-color;
+      transform: translateX(-3rem);
+      transition: transform $fast $easeInOut;
+    }
+    > .right-wrapper {
+      display: grid;
+      grid-template-columns: 18rem 8rem 1fr;
+      grid-column-gap: 2.5rem;
+      position: absolute;
+      right: 1.25rem;
+      > form.site-selector {
+        > .site-select-wrapper {
+          width: 100%;
+          &:after {
+            @include vertical-divider('right', $divider-x);
+          }
+        }
+      }
+      > .settings-btn {
+        color: rgba($white, 0.84);
+        &:hover {
+          color: rgba($white, 0.95);
+          transition: color $fast $easeInOut;
+        }
+      }
+      > div {
+        position: relative;
+        > .run-test-btn {
+          @include super-center();
+          position: relative;
+        }
+        &:after {
+          @include vertical-divider('right', $divider-x);
+        }
+      }
+    }
+  }
+  // modifiers
+  &.home-false {
+    > .toolbar {
+      > .back-btn {
+        opacity: 1;
+        pointer-events: all;
+      }
+      > .title {
+        transform: translateX(0);
+      }
+    }
+  }
+}

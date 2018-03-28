@@ -1,0 +1,27 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.global-stats-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1.25rem;
+  margin: 0;
+  &:nth-child(1) {
+    background-color: $green700;
+  }
+  &:nth-child(2) {
+    background-color: $red700;
+  }
+  &:nth-child(3) {
+    background-color: $ltblue700;
+  }
+  > .title {
+    color: rgba($white ,0.87);
+    font-size: 1rem;
+  }
+  > .data {
+    color: rgba($white, 0.87);
+    font-size: 2.5rem;
+  }
+}

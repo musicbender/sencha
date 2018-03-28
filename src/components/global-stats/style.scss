@@ -1,0 +1,14 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+section.global-stats {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  width: 100%;
+  max-width: $site-max-width;
+  height: 8rem;
+  margin: 3rem auto 2rem;
+  padding: 0;
+}

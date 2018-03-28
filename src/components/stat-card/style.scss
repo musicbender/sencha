@@ -1,0 +1,38 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.stat-card {
+  display: grid;
+  position: relative;
+  height: 14rem;
+  grid-template-columns: 1.25fr 1.75fr;
+  .percent-wrapper {
+    position: relative;
+    > .percent {
+      @include super-center;
+      font-size: 2rem;
+    }
+  }
+  > .content-wrapper {
+      position: relative;
+    > .other-data {
+      margin-top: 6rem;
+      width: 100%;
+      padding: 0;
+      list-style: none;
+      > li {
+        display: inline-block;
+        width: auto;
+        margin: 0 10px;
+        &:first-child { margin-left: 0;  }
+        &:last-child  { margin-right: 0; }
+      }
+    }
+  }
+  .stat-menu-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+}

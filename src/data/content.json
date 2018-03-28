@@ -1,0 +1,21 @@
+{
+  "global_stats": {
+    "passPercent": "Total Health",
+    "sites": "Sites",
+    "tests": "Tests"
+  },
+  "archive_table": [
+    "Pass Percent",
+    "Date",
+    "Enviroment",
+    "Icon"
+  ],
+  "archive_details": {
+    "passPercent": "Pass %",
+    "passes": "Passes",
+    "failures": "Failures",
+    "suites": "Suites",
+    "tests": "Tests",
+    "duration": "Duration"
+  }
+}
