@@ -56,9 +56,16 @@ export default ({
       <Divider />
       <div className="bottom-drawer">
         <Button
-          className="run-test-btn"
+          className="btn cancel-btn"
+          color="default"
+          onClick={() => toggleDrawer(false)}
+        >
+          Cancel
+        </Button>
+        <Button
+          className="btn run-test-btn"
           variant="raised"
-          color="primary"
+          color="secondary"
           onClick={() => handleClickRun()}
         >
           Run Test
