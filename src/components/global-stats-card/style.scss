@@ -7,6 +7,7 @@
   height: 100%;
   padding: 1rem 1.25rem;
   margin: 0;
+  overflow: hidden;
   &:nth-child(1) {
     background-color: $green700;
   }
@@ -23,5 +24,12 @@
   > .data {
     color: rgba($white, 0.87);
     font-size: 2.5rem;
+  }
+  > svg {
+    $size: 6rem;
+    @include super-center(80%);
+    opacity: 0.1;
+    width: $size;
+    height: $size;
   }
 }

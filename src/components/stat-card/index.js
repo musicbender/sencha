@@ -44,7 +44,7 @@ class StatCard extends Component {
   }
 
   renderMenu() {
-    const { site } = this.props;
+    const { site } = this.props.data;
     const { anchorEl } = this.state;
 
     return (
@@ -60,7 +60,7 @@ class StatCard extends Component {
         >
           {
             Object.keys(nav).map(item => (
-              <MenuItem key={item} onClick={this.handleClose}>
+              <MenuItem className={`menu-item-${item}`} key={item} onClick={this.handleClose}>
                 <Link to={this.getMenuPath(item)}>{nav[item].label}</Link>
               </MenuItem>
             ))

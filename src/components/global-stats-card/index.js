@@ -12,6 +12,7 @@ export default (props) => {
      <Paper className={`global-stats-card ${name}`}>
        <Typography className="title" variant="headline" component="h5">{content[name]}</Typography>
        <Typography className="data" component="h3">{stat}</Typography>
+       {props.children}
      </Paper>
   );
 }

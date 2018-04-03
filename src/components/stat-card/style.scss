@@ -26,6 +26,9 @@
         margin: 0 10px;
         &:first-child { margin-left: 0;  }
         &:last-child  { margin-right: 0; }
+        > a {
+
+        }
       }
     }
   }
@@ -34,5 +37,20 @@
     top: 0;
     right: 0;
     z-index: 1;
+  }
+}
+[id^="stat-menu-"] {
+  ul {
+    > li {
+      > a {
+        color: rgba(0, 0, 0, 0.87);
+        text-decoration: none;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: rgba(0, 0, 0, 0.87);
+        }
+      }
+    }
   }
 }
