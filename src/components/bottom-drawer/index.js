@@ -5,7 +5,9 @@ import SiteSelector from '../site-selector';
 import SettingsMenu from '../../components/settings-menu';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
+import Divider from 'material-ui/Divider';
 import SettingsIcon from 'material-ui-icons/Settings';
+import './style.scss';
 
 export default ({
   toggleDrawer,
@@ -23,40 +25,44 @@ export default ({
 }) => {
   return (
     <Drawer
+      className="new-test-drawer"
       anchor="bottom"
       open={drawerOpen}
       onClose={() => toggleDrawer(false)}
     >
-      <div>
-        <SiteSelector
-          sites={sites}
-          site={site}
-          env={settings.env}
-          handleSiteSelect={() => handleSiteSelect()}
-        />
+      <div className="top-drawer">
         <div>
-          <Button
-            className="run-test-btn"
-            variant="raised"
-            color="primary"
-            onClick={() => handleClickRun()}
-          >
-            Run Test
-          </Button>
+          <Typography component="h4" className="drawer-title">Run a new test</Typography>
         </div>
-        <IconButton className="settings-btn" color="inherit" aria-label="Settings">
-          <SettingsIcon
-            onClick={(e) => handleSettings(e.currentTarget)}
+        <div className="drawer-selector-container">
+          <SiteSelector
+            sites={sites}
+            site={site}
+            env={settings.env}
+            handleSiteSelect={() => handleSiteSelect()}
           />
-        </IconButton>
-        <SettingsMenu
-          settingsOpen={settingsOpen}
-          settingsEl={settingsEl}
-          toggleEnv={toggleEnv}
-          toggleArchive={toggleArchive}
-          handleSettings={handleSettings}
-          settings={settings}
-        />
+        </div>
+        <div className="drawer-settings-container">
+          <SettingsMenu
+            settingsOpen={settingsOpen}
+            settingsEl={settingsEl}
+            toggleEnv={toggleEnv}
+            toggleArchive={toggleArchive}
+            handleSettings={handleSettings}
+            settings={settings}
+          />
+        </div>
+      </div>
+      <Divider />
+      <div className="bottom-drawer">
+        <Button
+          className="run-test-btn"
+          variant="raised"
+          color="primary"
+          onClick={() => handleClickRun()}
+        >
+          Run Test
+        </Button>
       </div>
     </Drawer>
   );

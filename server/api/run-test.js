@@ -4,7 +4,7 @@ import path from 'path';
 import { apiResponse, parseResultsData, emptyDir, convertStats, timestamp } from '../util/util';
 import { s3SendFile, s3GetLink } from '../controllers/api/run-test';
 import Summary from '../models/summary';
-import ncWebTest from 'nc-web-test';
+import cappachino from 'ncw-cappachino';
 import maConfig from '../static/mochawesome-config.json';
 
 const router = express.Router();
@@ -20,11 +20,11 @@ router.post('/run-test/:site/:env', (req, res) => {
     createdAt: timestamp()
   }
 
-  process.env.NCWEBTEST_FUNCURL = config.funcURLS[env];
+  process.env.CAPPACHINO_FUNCURL = config.funcURLS[env];
 
   // setup();
 
-  ncWebTest({
+  cappachino({
     type: 'functional',
     pageTitle: config.title || `${site} functional test`,
     globPattern: `tests/${site}/*.test.js`,

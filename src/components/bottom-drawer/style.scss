@@ -1,2 +1,41 @@
 @import '../../style/helpers/variables';
 @import '../../style/helpers/mixins';
+
+.new-test-drawer {
+  > [class*="MuiDrawer-paper-"] {
+    > .top-drawer {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr 1fr;
+      grid-column-gap: 7%;
+      min-height: 10rem;
+      .drawer-title {
+        font-size: 1.2rem;
+        margin: 1rem;
+      }
+      .drawer-selector-container {
+        position: relative;
+        &:after {
+          @include super-center(initial);
+          content: '';
+          display: block;
+          background-color: rgba(0,0,0,0.1);
+          right: -12%;
+          width: 1px;
+          height: 75%;
+        }
+      }
+      .drawer-settings-container {
+        padding-right: 2rem;
+      }
+    }
+    > .bottom-drawer {
+      position: relative;
+      width: 100%;
+      height: 5rem;
+      > .run-test-btn {
+        @include super-center(initial, 50%, 0);
+        right: 1rem;
+      }
+    }
+  }
+}

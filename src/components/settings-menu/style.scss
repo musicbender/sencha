@@ -2,6 +2,7 @@
 @import '../../style/helpers/mixins';
 
 .settings-menu {
+  margin-top: 1rem !important;
   > [class^="MuiPaper-"] {
     width: 18rem;
   }

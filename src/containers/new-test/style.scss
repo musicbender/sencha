@@ -10,5 +10,9 @@
   > .new-test-btn {
     @include super-center(initial);
     right: 0;
+    background-color: $ltblue700;
+    &:hover {
+      background-color: darken($ltblue700, 8%);
+    }
   }
 }

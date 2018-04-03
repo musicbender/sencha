@@ -3,7 +3,7 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { MenuItem } from 'material-ui/Menu';
 import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form'
 import Select from 'material-ui/Select';
-import './site-selector.scss';
+import './style.scss'; 
 
 export default (props) => {
   const { sites, handleSiteSelect, site, env } = props;

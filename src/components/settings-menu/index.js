@@ -1,11 +1,10 @@
 import React from 'react';
 import { ListItemIcon, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import { MenuList, MenuItem } from 'material-ui/Menu';
 import Switch from 'material-ui/Switch';
 import ArchiveIcon from 'material-ui-icons/Archive';
 import CodeIcon from 'material-ui-icons/Code';
-
-import './settings-menu.scss';
+import './style.scss';
 
 export default (props) => {
   const  { settings, toggleEnv, toggleArchive, settingsOpen, settingsEl, handleSettings } = props;
@@ -16,7 +15,7 @@ export default (props) => {
   }
 
   return (
-    <div className="settings-menu">
+    <MenuList className="settings-menu">
       <MenuItem>
         <ListItemIcon>
           <CodeIcon />
@@ -41,6 +40,6 @@ export default (props) => {
           />
         </ListItemSecondaryAction>
       </MenuItem>
-    </div>
+    </MenuList>
   );
 }
