@@ -43,6 +43,10 @@ class NewTest extends Component {
     });
   }
 
+  redirectToReport(site) {
+    this.props.history.push(`/report/${site}/new`);
+  }
+
   render() {
     return (
       <div className="new-test">
@@ -58,6 +62,7 @@ class NewTest extends Component {
         <BottomDrawer
           handleSettings={this.handleSettings}
           handleClickRun={this.handleClickRun}
+          handleSiteSelect={this.handleSiteSelect}
           toggleDrawer={this.props.toggleDrawer}
           drawerOpen={this.props.drawerOpen}
           sites={this.props.sites}

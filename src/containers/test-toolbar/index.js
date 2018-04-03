@@ -38,10 +38,6 @@ class TestToolbar extends Component {
     });
   }
 
-  redirectToReport(site) {
-    this.props.history.push(`/report/${site}/new`);
-  }
-
   toDashboard() {
     this.props.history.push('/');
   }

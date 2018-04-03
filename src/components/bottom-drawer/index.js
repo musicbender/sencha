@@ -23,6 +23,11 @@ export default ({
   settingsEl,
   settingsOpen
 }) => {
+  const handleRunTest = () => {
+    toggleDrawer(false);
+    handleClickRun();
+  }
+
   return (
     <Drawer
       className="new-test-drawer"
@@ -39,7 +44,7 @@ export default ({
             sites={sites}
             site={site}
             env={settings.env}
-            handleSiteSelect={() => handleSiteSelect()}
+            handleSiteSelect={handleSiteSelect}
           />
         </div>
         <div className="drawer-settings-container">
@@ -66,7 +71,7 @@ export default ({
           className="btn run-test-btn"
           variant="raised"
           color="secondary"
-          onClick={() => handleClickRun()}
+          onClick={() => handleRunTest()}
         >
           Run Test
         </Button>
