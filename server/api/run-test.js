@@ -4,7 +4,7 @@ import path from 'path';
 import { apiResponse, parseResultsData, emptyDir, convertStats, timestamp } from '../util/util';
 import { s3SendFile, s3GetLink } from '../controllers/api/run-test';
 import Summary from '../models/summary';
-import cappachino from 'ncw-cappachino';
+import cappuccino from 'ncw-cappuccino';
 import maConfig from '../static/mochawesome-config.json';
 
 const router = express.Router();
@@ -20,19 +20,21 @@ router.post('/run-test/:site/:env', (req, res) => {
     createdAt: timestamp()
   }
 
-  process.env.CAPPACHINO_FUNCURL = config.funcURLS[env];
+  process.env.CAPPUCCINO_FUNCURL = config.funcURLS[env];
 
-  // setup();
-
-  cappachino({
+  // config for cappuccino to run test
+  const cappConfig = {
     type: 'functional',
     pageTitle: config.title || `${site} functional test`,
     globPattern: `tests/${site}/*.test.js`,
     funcEnv: env,
     baseDir: 'server/temp',
     funcURLS: config.funcURLS || {},
-    isLocal: false
-  }, invalidate => {
+    isLocal: false,
+    globalFuncTests: config.globalFuncTests || null
+  }
+
+  cappuccino(cappConfig, invalidate => {
     const saveDest = `/${site}/${env}-${params.createdAt}.json`;
     invalidate();
     sendData({
@@ -43,14 +45,6 @@ router.post('/run-test/:site/:env', (req, res) => {
     });
   });
 });
-
-function setup () {
-  return new Promise((resolve, reject) => {
-    emptyDir('server/temp')
-      .then(() => { resolve() })
-      .catch(() => { reject() })
-  })
-}
 
 function saveReport (params, saveDest) {
   const { site, env } = params;

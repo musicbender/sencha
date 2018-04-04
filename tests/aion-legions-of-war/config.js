@@ -1,4 +1,4 @@
-const url = process.env.NCWEBTEST_FUNCURL;
+const url = process.env.NCWEBTEST_FUNC_URL;
 
 module.exports = {
   site: {
@@ -7,6 +7,10 @@ module.exports = {
       "dev": "http://local.aionlegionsofwar.com:3000/en",
       "qa": "http://www-qa.aionlegionsofwar.com/en",
       "live": "http://www.aionlegionsofwar.com/en"
+    },
+    globalFuncTests: {
+      shouldRun: true,
+      excludeSuites: ["gnb"]
     }
   },
   global: {

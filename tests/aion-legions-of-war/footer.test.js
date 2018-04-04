@@ -1,4 +1,10 @@
 import { expect } from 'chai';
+import Nightmare from 'nightmare';
+import { global } from './config';
+
+let nightmare;
+const baseURL = process.env.CAPPUCCINO_FUNC_URL;
+const { defaultTimeout } = global;
 
 describe('Mock Test', function () {
   it('mocky mock', function () {

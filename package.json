@@ -27,8 +27,7 @@
     "chai": "^4.1.2",
     "express": "^4.16.2",
     "mongoose": "^5.0.7",
-    "ncw-cappachino": "ssh://git-codecommit.us-west-2.amazonaws.com/v1/repos/ncw-cappachino",
-    "nightmare": "^2.10.0",
+    "nightmare": "^3.0.1",
     "nightmare-window-manager": "^0.2.2",
     "pug": "^2.0.0-rc.4",
     "xvfb": "^0.2.3"

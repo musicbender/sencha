@@ -4,7 +4,7 @@ export default {
     drawerOpen: false
   },
   settings: {
-    live: true,
+    live: false,
     archive: false
   },
   summary: {
