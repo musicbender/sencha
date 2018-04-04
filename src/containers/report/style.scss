@@ -1,0 +1,19 @@
+@import '../../style/helpers/variables';
+@import '../../style/helpers/mixins';
+
+.report-container {
+  min-height: 100vh;
+  .progress-bar {
+    position: absolute;
+    display: block;
+    top: 3.575rem;
+    left: 0;
+    width: 100%;
+  }
+  .progress-text {
+    @include super-center();
+    display: block;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1.25rem;
+  }
+}

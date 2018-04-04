@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { LinearProgress } from 'material-ui/Progress';
+import Typography from 'material-ui/Typography';
 import { runTest, runTestSuccess, runTestFailure } from '../../actions/runner';
 import { cleanUpDOM, deleteAttr } from '../../util/util';
 import {
@@ -12,6 +14,7 @@ import {
   fetchReportFailure,
   resetReport
 } from '../../actions/report';
+import './style.scss';
 
 class Report extends Component {
   constructor(props) {
@@ -19,6 +22,7 @@ class Report extends Component {
   }
 
   componentDidMount() {
+    this.props.loadingReport();
     this.getReport();
   }
 
@@ -79,7 +83,6 @@ class Report extends Component {
     const { data, config } = dataObj;
 
     if (data) {
-      console.log('set data to DOM');
       document.body.setAttribute('data-raw', data);
       document.body.setAttribute('data-config', config);
       this.makeScript();
@@ -95,7 +98,6 @@ class Report extends Component {
   makeScript() {
     const script = document.getElementById('report-script');
     if (!script) {
-      console.log('setting script app.js to DOM');
       const reportJS = document.createElement('script');
       reportJS.type = 'text/javascript';
       reportJS.src = '/app.js';
@@ -109,12 +111,20 @@ class Report extends Component {
     this.props.resetReport();
   }
 
+  renderLoading() {
+    return [
+      <LinearProgress color="secondary" className="progress-bar" key={Math.random()} />,
+      <Typography className="progress-text" key={Math.random()}>Test is running. This may take a few minutes.</Typography>
+    ];
+  }
+
   render() {
-    const { data, config } = this.props;
+    const { data, config, loading } = this.props;
 
     return (
       <section className="report-container">
         <div id="report"></div>
+        { loading && this.renderLoading() }
       </section>
     );
   }

@@ -33,7 +33,7 @@ export default function report(state = initialState.report, action) {
     case REPORT_LOADING:
       return { ...state, loading: payload };
     case REPORT_RESET:
-      return { ...state, data: null, config: null, loading: false, error: null };
+      return { ...state, data: null, config: null, error: null };
     default:
       return state;
   }
