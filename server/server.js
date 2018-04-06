@@ -33,15 +33,6 @@ db.on('error', err => {
   console.error(err);
 });
 
-// db.once('open', () => {
-//   console.log('mongo connected...');
-//
-//   app.listen(PORT, err => {
-//     if (err) { console.error(err); }
-//     console.log(`NC Test App now live at ${PORT}!`);
-//   });
-// })
-
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(wpConfig);

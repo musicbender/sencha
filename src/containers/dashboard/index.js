@@ -20,11 +20,11 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { loading, error, summary } = this.props;
+    const { loading, error, summary, inProgress } = this.props;
     return (
       <main className="dashboard">
         { summary && <GlobalStats data={summary} /> }
-        { summary && <Stats data={summary} /> }
+        { summary && <Stats data={summary} inProgress={inProgress}/> }
         { loading && <p>Loading...</p> }
       </main>
     );
@@ -37,7 +37,8 @@ const mapStateToProps = state => {
     loading,
     error,
     sites: state.sites.data,
-    summary: all
+    summary: all,
+    inProgress: state.progress.inProgress
   }
 }
 

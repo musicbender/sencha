@@ -43,6 +43,10 @@ class StatCard extends Component {
     }
   }
 
+  isDisabled(item) {
+    return item === "run-test" && this.props.inProgress;
+  }
+
   renderMenu() {
     const { site } = this.props.data;
     const { anchorEl } = this.state;
@@ -60,7 +64,7 @@ class StatCard extends Component {
         >
           {
             Object.keys(nav).map(item => (
-              <MenuItem className={`menu-item-${item}`} key={item} onClick={this.handleClose}>
+              <MenuItem className={`menu-item-${item} disabled-${this.isDisabled(item)}`} key={item} onClick={this.handleClose}>
                 <Link to={this.getMenuPath(item)}>{nav[item].label}</Link>
               </MenuItem>
             ))

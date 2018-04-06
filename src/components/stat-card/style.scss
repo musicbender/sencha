@@ -51,6 +51,24 @@
           color: rgba(0, 0, 0, 0.87);
         }
       }
+      &.disabled-true {
+        pointer-events: none;
+        cursor: default;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: rgba(0, 0, 0, 0.87);
+          background-color: transparent;
+        }
+        a {
+          color: rgba(0,0,0,0.4);
+          pointer-events: none;
+          &:hover,
+          &:focus {
+            cursor: default;
+          }
+        }
+      }
     }
   }
 }

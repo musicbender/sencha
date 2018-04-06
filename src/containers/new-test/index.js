@@ -54,6 +54,7 @@ class NewTest extends Component {
           variant="fab"
           color="primary"
           aria-label="add"
+          disabled={this.props.inProgress}
           className="new-test-btn"
           onClick={() => this.handleClick()}
         >
@@ -82,7 +83,8 @@ const mapStateToProps = state => {
   return {
     drawerOpen: state.global.drawerOpen,
     sites: state.sites.data,
-    settings: state.settings
+    settings: state.settings,
+    inProgress: state.progress.inProgress
   }
 }
 

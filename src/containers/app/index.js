@@ -6,35 +6,21 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { fetchSites, fetchSitesSuccess, fetchSitesFailure } from '../../actions/sites';
 import { setInProgress, socketFail } from '../../actions/progress';
 import { SITE_URL } from '../../data/config';
-import red from 'material-ui/colors/red';
-
-// components
+import muiTheme from '../../style/vendor/mui-theme';
 import TestToolbar from '../test-toolbar';
+import NewTest from '../new-test';
+import Snackbar from '../../components/snackbar';
+
+// component routes
 import Dashboard from '../dashboard';
 import Report from '../report';
 import Archive from '../archive';
-import NewTest from '../new-test';
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.socket = io(SITE_URL);
-
-    this.theme = createMuiTheme({
-      palette: {
-        primary: {
-          main: '#388e3c',
-          contrastTest: '#fff'
-        },
-        secondary: {
-          main: '#0288d1',
-          contrastTest: '#fff'
-        },
-        error: red
-      }
-    });
-
+    this.theme = createMuiTheme(muiTheme);
     this.state = {
       status: {},
       sites: []
@@ -46,17 +32,15 @@ class App extends Component {
 
     // sockets
     this.socket.on('inProgress', res => {
-      console.log(res);
       this.props.setInProgress(true);
     });
 
     this.socket.on('notInProgress', res => {
-      console.log(res);
       this.props.setInProgress(false);
     });
 
     this.socket.on('error', res => {
-      console.log(res);
+      console.error(res);
       this.props.socketFail(res);
     });
   }
@@ -67,15 +51,22 @@ class App extends Component {
         <MuiThemeProvider theme={this.theme}>
           <TestToolbar />
           <Route exact path="/" component={Dashboard} />
-          {/* <Route path="/report/:site/:date" component={Report} /> */}
           <Route path="/report/:site/:date" render={() => (
             <Report socket={this.socket} />
           )} />
           <Route path="/archive/:site" component={Archive} />
           <NewTest />
+          <Snackbar inProgress={this.props.inProgress} />
         </MuiThemeProvider>
       </div>
     );
+  }
+}
+
+const mapStateToProps = ({progress}) => {
+  return {
+    inProgress: progress.inProgress,
+    progressError: progress.error
   }
 }
 
@@ -104,4 +95,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

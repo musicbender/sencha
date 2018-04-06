@@ -17,5 +17,8 @@
     "suites": "Suites",
     "tests": "Tests",
     "duration": "Duration"
+  },
+  "progress": {
+    "in_progress": "A new test has been started from another source. New tests are disabled until it has finished."
   }
 }
