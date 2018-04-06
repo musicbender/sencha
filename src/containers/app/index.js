@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import io from 'socket.io-client'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { fetchSites, fetchSitesSuccess, fetchSitesFailure } from '../../actions/sites';
+import { setInProgress, socketFail } from '../../actions/progress';
+import { SITE_URL } from '../../data/config';
 import red from 'material-ui/colors/red';
 
 // components
@@ -15,6 +18,8 @@ import NewTest from '../new-test';
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.socket = io(SITE_URL);
 
     this.theme = createMuiTheme({
       palette: {
@@ -38,6 +43,22 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchSites();
+
+    // sockets
+    this.socket.on('inProgress', res => {
+      console.log(res);
+      this.props.setInProgress(true);
+    });
+
+    this.socket.on('notInProgress', res => {
+      console.log(res);
+      this.props.setInProgress(false);
+    });
+
+    this.socket.on('error', res => {
+      console.log(res);
+      this.props.socketFail(res);
+    });
   }
 
   render() {
@@ -46,7 +67,10 @@ class App extends Component {
         <MuiThemeProvider theme={this.theme}>
           <TestToolbar />
           <Route exact path="/" component={Dashboard} />
-          <Route path="/report/:site/:date" component={Report} />
+          {/* <Route path="/report/:site/:date" component={Report} /> */}
+          <Route path="/report/:site/:date" render={() => (
+            <Report socket={this.socket} />
+          )} />
           <Route path="/archive/:site" component={Archive} />
           <NewTest />
         </MuiThemeProvider>
@@ -70,6 +94,12 @@ const mapDispatchToProps = dispatch => {
         .catch(err => {
           dispatch(runTestFailure(err));
         });
+    },
+    setInProgress: bool => {
+      dispatch(setInProgress(bool));
+    },
+    socketFail: res => {
+      dispatch(socketFail(res));
     }
   }
 }

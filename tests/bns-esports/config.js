@@ -8,6 +8,10 @@ module.exports = {
       "dev": "http://local.esports.bladeandsoul.com:3000/en",
       "qa": "http://qa.esports.bladeandsoul.com/en",
       "live": "http://esports.bladeandsoul.com/en"
+    },
+    globalFuncTests: {
+      shouldRun: true,
+      excludeSuites: []
     }
   },
   global: {

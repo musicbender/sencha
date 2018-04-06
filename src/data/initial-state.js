@@ -27,6 +27,10 @@ export default {
   runner: {
     site: "",
     loading: false,
+    error: null,
+  },
+  progress: {
+    inProgress: false,
     error: null
   }
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { LinearProgress } from 'material-ui/Progress';
 import Typography from 'material-ui/Typography';
 import { runTest, runTestSuccess, runTestFailure } from '../../actions/runner';
+import { inProgressSocket } from '../../actions/progress';
 import { cleanUpDOM, deleteAttr } from '../../util/util';
 import {
   loadingReport,
@@ -72,7 +73,7 @@ class Report extends Component {
     const env = live ? 'live' : 'qa';
 
     this.cleanUp();
-    this.props.runTest({site, env, archive});
+    this.props.runTest({site, env, archive}, this.props.socket);
   }
 
   getArchivedReport(config) {
@@ -170,10 +171,12 @@ const mapDispatchToProps = dispatch => {
           dispatch(fetchReportFailure(err));
         });
     },
-    runTest: config => {
+    runTest: (config, socket) => {
+      dispatch(inProgressSocket(true, socket))
       dispatch(runTest(config))
         .then(result => {
           const { payload } = result;
+          dispatch(inProgressSocket(false, socket));
           if (payload && payload.status !== 200) {
             dispatch(runTestFailure(payload.data.message));
           } else {
@@ -181,6 +184,7 @@ const mapDispatchToProps = dispatch => {
           }
         })
         .catch(err => {
+          dispatch(inProgressSocket(false, socket));
           dispatch(runTestFailure(err));
         });
     },

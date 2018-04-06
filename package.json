@@ -30,6 +30,7 @@
     "nightmare": "^3.0.1",
     "nightmare-window-manager": "^0.2.2",
     "pug": "^2.0.0-rc.4",
+    "socket.io": "^2.1.0",
     "xvfb": "^0.2.3"
   },
   "devDependencies": {
@@ -61,6 +62,7 @@
     "rimraf": "^2.6.2",
     "rsync": "^0.6.1",
     "sass-loader": "^6.0.6",
+    "socket.io-client": "^2.1.0",
     "style-loader": "^0.20.2",
     "title-case": "^2.1.1",
     "webpack": "^3.11.0",

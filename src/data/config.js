@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 let DATA_URL = 'https://s3-us-east-2.amazonaws.com/patjacobs-data/nctest/';
-
+let SITE_URL = `http://localhost:${process.env.PORT || '3011'}`;
 const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test') ?
-  process.env.BASE_URL || (`http://localhost:${process.env.PORT || '3001'}/api`) :
+  process.env.BASE_URL || (`http://localhost:${process.env.PORT || '3011'}/api`) :
   '/api';
 
 const API = axios.create({
@@ -24,5 +24,6 @@ export {
   API,
   API_URL,
   DATA,
-  DATA_URL
+  DATA_URL,
+  SITE_URL
 };
