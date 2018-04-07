@@ -31,13 +31,15 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Tests
+# Test List Directory
+tests/*
+!tests/fake-site
 
+# Tests
 test/runner
 test/integration/runner
 
 # Other
-
 .htaccess
 .DS_Store
 dist

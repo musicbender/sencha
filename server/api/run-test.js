@@ -13,6 +13,7 @@ router.post('/run-test/:site/:env', (req, res) => {
   const { site, env } = req.params;
   const { archive } = req.body.data;
   const config = require(`../../tests/${site}/config.js`).site || {};
+  const fakeTest = process.env.LIVE ? [] : ['tests/fake-site/*'];
   const params = {
     site,
     env,
@@ -27,6 +28,7 @@ router.post('/run-test/:site/:env', (req, res) => {
     type: 'functional',
     pageTitle: config.title || `${site} functional test`,
     globPattern: `tests/${site}/*.test.js`,
+    ignored: fakeTest,
     funcEnv: env,
     baseDir: 'server/temp',
     funcURLS: config.funcURLS || {},
