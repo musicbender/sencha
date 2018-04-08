@@ -6,11 +6,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = {
   devtool: 'cheap-module-source-map',
   resolve: {
-    extensions: ['.js', 'json'],
+    extensions: ['.js', '.json'],
   },
   entry: {
     index: [path.join(__dirname, '/src/index.js')],
-    vendor: ['react', 'react-dom'],
+    vendor: ['react', 'react-dom', 'react-router-dom'],
   },
   output: {
     path: path.join(__dirname, '/dist/public'),
@@ -50,21 +50,16 @@ const config = {
     },
     {
       test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=[path][hash].[ext]"
-    },
-    ],
+    }],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'ONSERVER': false,
-        'LIVE:': JSON.stringify(process.env.LIVE)
+        'NODE_ENV': JSON.stringify('production'),
       }
     }),
     new CopyWebpackPlugin([
-      { from: 'src/vendor/mochawesome/assets/*', to: path.resolve(__dirname, 'dist/public'), flatten: true},
-      { from: 'server/temp/runner.json', to: path.resolve(__dirname, 'dist'), flatten: true },
-      { from: 'src/assets/favicons/*', to: 'favicons', flatten: true }
+      { from: 'src/vendor/mochawesome/assets/*', to: path.resolve(__dirname, 'dist/public'), flatten: true}
     ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

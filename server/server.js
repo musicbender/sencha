@@ -8,17 +8,13 @@ import socketIO from 'socket.io';
 import { PORT, DB_HOST, DB_PORT } from './config';
 import api from './api';
 
-// webpack
-import webpack from 'webpack';
-import wpConfig from '../webpack.dev.config';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-
 // initialization
 const app = new express();
 const server = http.createServer(app);
 const io = socketIO(server);
 const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
+
+console.log(process.env);
 
 app.set('view engine', 'pug');
 app.set('views', viewDir);
@@ -35,12 +31,18 @@ db.on('error', err => {
 
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack');
+  const wpConfig = require('../webpack.dev.config');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(wpConfig);
+
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: wpConfig.output.publicPath,
     stats: {colors: true}
   }));
+
   app.use(webpackHotMiddleware(compiler, {
     log: console.log
   }));
@@ -79,6 +81,8 @@ io.on('connection', socket => {
   socket.on('disconnect', () => {
     console.log('user disconnected')
   });
-})
+});
+
+console.log(`PORRRT: ${PORT}`);
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`))

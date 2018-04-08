@@ -43,14 +43,15 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'ONSERVER': "true",
+        'NODE_ENV': JSON.stringify('production'),
         'LIVE': process.env.LIVE,
         'PORT': process.env.PORT,
       }
     }),
     new CopyWebpackPlugin([
-      { from: 'server/views/', to: 'views', flatten: true}
+      { from: 'server/views/', to: 'views', flatten: true },
+      { from: 'server/temp/runner.json', to: path.resolve(__dirname, 'dist'), flatten: true },
+      // { from: 'server/config.js', to: path.resolve(__dirname, 'dist'), flatten: true},
     ]),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

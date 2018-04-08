@@ -59,6 +59,7 @@ const config = {
       'process.env': {
         'LIVE': false,
         'CLIENT': JSON.stringify(true),
+        'ONSERVER': false,
         'NODE_ENV': JSON.stringify('development'),
         'PORT': PORT,
         'BASE_URL': JSON.stringify('http://localhost'),
@@ -66,7 +67,7 @@ const config = {
     }),
     new CopyWebpackPlugin([
       { from: 'src/vendor/mochawesome/assets/*', to: path.resolve(__dirname, 'dist'), flatten: true},
-      // { from: 'server/temp/runner.json', to: path.resolve(__dirname, 'dist'), flatten: true }
+      { from: 'server/config.js', to: path.resolve(__dirname, 'dist'), flatten: true},
     ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
