@@ -51,7 +51,7 @@ class App extends Component {
         <MuiThemeProvider theme={this.theme}>
           <TestToolbar />
           <Route exact path="/" component={Dashboard} />
-          <Route path="/report/:site/:date" render={() => (
+          <Route path="/report/:site/:date/:env" render={() => (
             <Report socket={this.socket} />
           )} />
           <Route path="/archive/:site" component={Archive} />

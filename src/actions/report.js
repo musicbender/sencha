@@ -10,12 +10,8 @@ import {
 import { API, DATA } from '../data/config';
 
 export function fetchReportURL(config) {
-  const { site, date } = config;
-	const request = API.get(`report-url/${site}/${date}`, {
-    headers: {
-
-    }
-  });
+  const { site, date, env } = config;
+	const request = API.get(`report-url/${site}/${date}/${env}`);
   return {
     type: REPORT_URL_FETCH,
     payload: request

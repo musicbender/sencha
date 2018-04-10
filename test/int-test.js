@@ -1,6 +1,6 @@
-import ncWebTest from 'nc-web-test';
+import cappuccino from 'ncw-cappuccino';
 
-ncWebTest({
+cappuccino({
   type: 'integration',
-  pageTitle: 'NC Test App'
+  pageTitle: 'Sencha'
 });

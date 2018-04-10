@@ -1,8 +1,8 @@
-import ncWebTest from 'nc-web-test';
+import cappuccino from 'ncw-cappuccino';
 
-ncWebTest({
+cappuccino({
   type: 'unit',
-  pageTitle: 'Test App',
+  pageTitle: 'Sencha',
   globPattern: 'src/**/*.test.js',
   ignored: [
     'tests/*',

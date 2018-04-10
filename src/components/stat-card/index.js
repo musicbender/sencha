@@ -33,7 +33,7 @@ class StatCard extends Component {
     const { site, createdAt } = this.props.data;
     switch(item) {
       case "report":
-        return `/report/${site}/${createdAt}`;
+        return `/report/${site}/${createdAt}/live`;
       case "archive":
         return `/archive/${site}`;
       case "run-test":

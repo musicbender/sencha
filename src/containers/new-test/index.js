@@ -44,7 +44,9 @@ class NewTest extends Component {
   }
 
   redirectToReport(site) {
-    this.props.history.push(`/report/${site}/new`);
+    const { live } = this.props.settings;
+    const env = live ? 'live' : 'qa';
+    this.props.history.push(`/report/${site}/new/${env}`);
   }
 
   render() {

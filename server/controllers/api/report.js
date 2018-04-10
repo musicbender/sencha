@@ -16,8 +16,8 @@ export const getReportConfig = site => {
 
 export const getReportURL = data => {
   return new Promise((resolve, reject) => {
-    const { site, date } = data;
-    const key = `${S3_BASEPATH}/${site}/live-${date}.json`;
+    const { site, date, env } = data;
+    const key = `${S3_BASEPATH}/${site}/${env}-${date}.json`;
 
     const params = {
       Bucket: S3_BUCKET,

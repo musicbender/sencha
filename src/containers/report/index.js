@@ -55,14 +55,14 @@ class Report extends Component {
 
   getReport() {
     const { data, config } = this.props;
-    const { site, date } = this.props.match.params;
+    const { site, date, env } = this.props.match.params;
 
     switch(date) {
       case "new":
         this.runNewTest();
         break;
       default:
-        this.getArchivedReport({date, site});
+        this.getArchivedReport({date, site, env});
         break;
     }
   }

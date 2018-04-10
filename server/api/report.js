@@ -6,9 +6,9 @@ import { apiResponse } from '../util/util';
 
 const router = express.Router();
 
-router.get('/report-url/:site/:date', (req, res) => {
-  const { site, date } = req.params;
-  getReportURL({site, date})
+router.get('/report-url/:site/:date/:env', (req, res) => {
+  const { site, date, env } = req.params;
+  getReportURL({site, date, env})
     .then(result => {
       const output = {
         url: result,

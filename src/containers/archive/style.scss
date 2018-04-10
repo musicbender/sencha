@@ -2,6 +2,8 @@
 @import '../../style/helpers/mixins';
 
 main.archive {
+  position: relative;
+  top: $test-toolbar-height;
   > .title-wrapper {
     position: relative;
     width: 100%;
