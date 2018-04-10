@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { apiResponse, parseResultsData, emptyDir, convertStats, timestamp } from '../util/util';
 import { s3SendFile, s3GetLink } from '../controllers/api/run-test';
+import { TESTS_DIR } from '../config';
 import Summary from '../models/summary';
 import cappuccino from 'ncw-cappuccino';
 import maConfig from '../static/mochawesome-config.json';
@@ -12,7 +13,15 @@ const router = express.Router();
 router.post('/run-test/:site/:env', (req, res) => {
   const { site, env } = req.params;
   const { archive } = req.body.data;
+
+  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+  console.log(`testconfig: ${TESTS_DIR}`);
+  console.log(`dir: ${__dirname}`);
+  console.log(`cwd: ${process.cwd()}`);
+
   const config = require(`../../tests/${site}/config.js`).site || {};
+
+  console.log(config);
   const fakeTest = process.env.LIVE ? [] : ['tests/fake-site/*'];
   const params = {
     site,

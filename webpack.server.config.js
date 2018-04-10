@@ -27,8 +27,8 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ["babel-loader?presets[]=env&presets[]=react"],
-        exclude: /(node_modules|bower_components)/,
+        loaders: "babel-loader",
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,

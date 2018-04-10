@@ -12,16 +12,16 @@ import api from './api';
 const app = new express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const viewDir = process.env.LIVE ? 'dist/views' : 'server/views';
+const viewDir = process.env.NODE_ENV === 'production' ? 'dist/views' : 'server/views';
 
-console.log(process.env);
+console.log(`LIVE? ${process.env.LIVE}`);
 
 app.set('view engine', 'pug');
 app.set('views', viewDir);
 
 // connect to database and start server
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/nc-test-app`);
+mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/sencha`);
 
 const db = mongoose.connection;
 

@@ -39,6 +39,9 @@ webpack([
       'dist',
       'tests',
       'index.js',
+      'package.json',
+      '.nvmrc',
+      '.babelrc',
       'tools/start-live.sh'
     ])
     .destination('pjacobs:/var/www/sencha/')

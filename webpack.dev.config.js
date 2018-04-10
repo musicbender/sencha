@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PORT = require('./server/config').PORT;
 
@@ -58,10 +57,9 @@ const config = {
     new webpack.DefinePlugin({
       'process.env': {
         'LIVE': false,
-        'CLIENT': JSON.stringify(true),
-        'ONSERVER': false,
         'NODE_ENV': JSON.stringify('development'),
-        'PORT': PORT,
+        'BABEL_ENV': JSON.stringify('development'),
+        'PORT': 3011,
         'BASE_URL': JSON.stringify('http://localhost'),
       },
     }),

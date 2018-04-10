@@ -2,7 +2,7 @@
 @import '../../style/helpers/mixins';
 
 .new-test-drawer {
-  > [class*="MuiDrawer-paper-"] {
+  > div:nth-child(2) {
     > .top-drawer {
       display: grid;
       grid-template-columns: 0.5fr 1fr 1fr;

@@ -5,28 +5,5 @@
   margin-top: 2.5rem !important;
   > .site-select-wrapper {
     width: 100%;
-    > label {
-      // color: rgba($white, 0.54);
-    }
-    > [class^="MuiInput-"] {
-      // color: rgba($white, 0.87);
-      &:hover {
-        &:before {
-          // background-color: rgba($white, 0.87);
-        }
-      }
-      &:before {
-        // background-color: rgba($white, 0.42);
-      }
-      &:after {
-        // background-color: rgba($white, 0.54);
-      }
-      > div[class^="MuiSelect-"] {
-        // color: rgba($white, 0.87);
-        > svg {
-          // color: rgba($white, 0.54);
-        }
-      }
-    }
   }
 }
