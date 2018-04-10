@@ -29,9 +29,10 @@ const getAllRecentData = sites => {
   });
 }
 
+// only get summaries for live sites for getRecentAll
 const getRecentData = site => {
   return new Promise((resolve, reject) => {
-    Summary.find({site}).sort({createdAt: -1}).limit(1).exec((err, data) => {
+    Summary.find({site, env: "live"}).sort({createdAt: -1}).limit(1).exec((err, data) => {
       if (err) reject(err);
       resolve(data)
     });
