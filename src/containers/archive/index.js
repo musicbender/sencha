@@ -48,11 +48,26 @@ class Archive extends Component {
   buildTabContainer() {
     const { tab } = this.state;
     const { site } = this.props.match.params;
+    const env = this.getEnv();
 
     return (
       <div>
-        { tab === 0 && <ArchiveList data={this.filterEnvData("live")} history={this.props.history}/> }
-        { tab === 1 && <ArchiveList data={this.filterEnvData("qa")} history={this.props.history} />  }
+        {
+          tab === 0 &&
+          <ArchiveList
+            data={this.filterEnvData("live")}
+            history={this.props.history}
+            env={env}
+          />
+        }
+        {
+          tab === 1 &&
+          <ArchiveList
+            data={this.filterEnvData("qa")}
+            history={this.props.history}
+            env={env}
+          />
+        }
       </div>
     )
   }

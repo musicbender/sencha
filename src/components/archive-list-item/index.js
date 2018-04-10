@@ -13,10 +13,10 @@ import { formatDate } from '../../util/date';
 import './style.scss';
 
 export default (props) => {
-  const { data, history } = props;
+  const { data, history, env } = props;
 
   const redirectToReport = (site, createdAt) => {
-    history.push(`/report/${site}/${createdAt}`);
+    history.push(`/report/${site}/${createdAt}/${env}`);
   }
 
   const handleClick = () => {

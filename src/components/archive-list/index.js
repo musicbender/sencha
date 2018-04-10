@@ -5,16 +5,23 @@ import Typography from 'material-ui/Typography';
 import './style.scss';
 
 export default (props) => {
-  const { data, history } = props;
+  const { data, history, env } = props;
 
   const buildList = data => {
     return Object.keys(data).map((item, i) => {
-      return <ArchiveListItem data={data[item]} history={history} key={Math.random()} />;
+      return (
+        <ArchiveListItem
+          data={data[item]}
+          history={history}
+          env={env}
+          key={Math.random()} 
+        />
+      );
     });
   }
 
   return (
-     <section className={`archive-list`}>
+     <section className="archive-list">
         { data && buildList(data) }
      </section>
   );
