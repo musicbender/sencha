@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 let DATA_URL = 'https://s3-us-east-2.amazonaws.com/patjacobs-data/nctest/';
-let SITE_URL = `http://172.31.78.53:${process.env.PORT || '3011'}`;
+let SITE_URL = `http://localhost:${process.env.PORT || '3011'}`;
 const API_URL = (typeof window === 'undefined' || process.env.NODE_ENV === 'test') ?
-  process.env.BASE_URL || (`http://172.31.78.53:${process.env.PORT || '3011'}/api`) :
+  process.env.BASE_URL || (`http://localhost:${process.env.PORT || '3011'}/api`) :
   '/api';
 
 const API = axios.create({

@@ -83,6 +83,6 @@ io.on('connection', socket => {
   });
 });
 
-console.log(`PORRRT: ${PORT}`);
+app.set('socketio', io);
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`))

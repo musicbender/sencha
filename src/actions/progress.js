@@ -12,9 +12,8 @@ export function socketFail() {
   }
 }
 
-export function inProgressSocket(bool, socket) {
+export function inProgressSocket(bool) {
   return {
-    type: bool ? TEST_IN_PROGRESS : TEST_NOT_IN_PROGRESS,
-    payload: bool ? socket.emit('inProgress') : socket.emit('notInProgress')
+    type: bool ? TEST_IN_PROGRESS : TEST_NOT_IN_PROGRESS
   }
 }

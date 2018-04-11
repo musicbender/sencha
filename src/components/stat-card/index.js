@@ -37,7 +37,7 @@ class StatCard extends Component {
       case "archive":
         return `/archive/${site}`;
       case "run-test":
-        return `/report/${site}/new`;
+        return `/report/${site}/new/live`;
       default:
         return "";
     }

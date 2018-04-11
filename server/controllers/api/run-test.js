@@ -15,7 +15,7 @@ export const s3SendFile = (file, dest) => {
     ContentType: getContentTypeByFile(dest)
   }, (err, res) => {
     if (err) console.error(err);
-    console.log(`sent to ${S3_BASEPATH + S3_BASEPATH + dest}`);
+    console.log(`sent to ${S3_BASEPATH + dest}`);
   });
 }
 

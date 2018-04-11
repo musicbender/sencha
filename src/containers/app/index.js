@@ -25,11 +25,10 @@ class App extends Component {
       status: {},
       sites: []
     };
-  }
+  }W
 
   componentDidMount() {
     this.props.fetchSites();
-
     // sockets
     this.socket.on('inProgress', res => {
       this.props.setInProgress(true);

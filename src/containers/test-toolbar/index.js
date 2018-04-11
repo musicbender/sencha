@@ -61,7 +61,7 @@ class TestToolbar extends Component {
             />
           </IconButton>
           <Typography variant="title" color="inherit" className="title">
-            NC Test App
+            Sencha
           </Typography>
         </Toolbar>
       </section>

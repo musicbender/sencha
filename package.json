@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "export LIVE=false; export PORT=3011; export NODE_ENV=development; export BABEL_ENV=development; nodemon index.js",
+    "start:debug": "export LIVE=false; export PORT=3011; export NODE_ENV=development; export BABEL_ENV=development; node index.js",
     "start:dist": "export LIVE=false; export PORT=3001; export NODE_ENV=production; export BABEL_ENV=development; babel-node index.js",
     "start:live": "export NODE_ENV=production; export PORT=3021; export LIVE=true; export BABEL_ENV=live; babel-node index.js",
     "build:server": "export LIVE=false; export PORT=3001; babel-node tools/build-server.js",

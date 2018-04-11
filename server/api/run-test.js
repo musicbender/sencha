@@ -11,17 +11,10 @@ import maConfig from '../static/mochawesome-config.json';
 const router = express.Router();
 
 router.post('/run-test/:site/:env', (req, res) => {
+  const io = req.app.get('socketio');
   const { site, env } = req.params;
   const { archive } = req.body.data;
-
-  console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-  console.log(`testconfig: ${TESTS_DIR}`);
-  console.log(`dir: ${__dirname}`);
-  console.log(`cwd: ${process.cwd()}`);
-
   const config = require(`../../tests/${site}/config.js`).site || {};
-
-  console.log(config);
   const fakeTest = process.env.LIVE ? [] : ['tests/fake-site/*'];
   const params = {
     site,
@@ -29,6 +22,10 @@ router.post('/run-test/:site/:env', (req, res) => {
     archive,
     createdAt: timestamp()
   }
+
+  io.emit('inProgress', {
+    message: 'in progress'
+  });
 
   process.env.CAPPUCCINO_FUNCURL = config.funcURLS[env];
 
@@ -53,7 +50,7 @@ router.post('/run-test/:site/:env', (req, res) => {
       res,
       testConfig: config,
       saveDest
-    });
+    }, io);
   });
 });
 
@@ -79,7 +76,7 @@ function saveSummary (data, params, saveDest) {
   });
 }
 
-function sendData (configs) {
+function sendData (configs, io) {
   const { params, res, testConfig, saveDest } = configs;
   const { site, env } = params;
 
@@ -103,6 +100,10 @@ function sendData (configs) {
     }
 
     apiResponse(res, 200, 0, 'success', output);
+
+    io.emit('notInProgress', {
+      message: 'not in progress'
+    });
   });
 }
 

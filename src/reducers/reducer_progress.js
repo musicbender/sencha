@@ -9,7 +9,7 @@ export default function progress(state = initialState.progress, action) {
     case TEST_NOT_IN_PROGRESS:
       return { ...state, inProgress: false, error: null };
     case SOCKET_FAIL:
-      return { ...state, inProgress: false, error: payload }
+      return { ...state, inProgress: false, error: true}
     default:
       return state;
   }
